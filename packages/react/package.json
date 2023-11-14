@@ -6,7 +6,8 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "encode-bundle src/index.ts --format cjs,esm --dts"
+    "build": "encode-bundle src/index.ts --format iife,cjs,esm --dts --global-name encode_monitor",
+    "clean": "rimraf dist node_modules"
   },
   "files": [
     "dist",
