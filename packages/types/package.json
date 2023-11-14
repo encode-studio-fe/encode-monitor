@@ -1,0 +1,29 @@
+{
+  "name": "encode-monitor-types",
+  "version": "0.0.1",
+  "description": "印客学院--前端稳定性监控 通用类型",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "encode-bundle src/index.ts --format cjs,esm --dts"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "encode",
+    "monitor",
+    "types"
+  ],
+  "author": "chenghuai",
+  "license": "ISC",
+  "devDependencies": {
+    "encode-bundle": "^1.4.1"
+  },
+  "dependencies": {
+    "encode-monitor-core": "workspace:^",
+    "encode-monitor-shared": "workspace:^",
+    "encode-monitor-utils": "workspace:^"
+  }
+}

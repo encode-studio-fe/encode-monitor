@@ -4,16 +4,209 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-devDependencies:
-  encode-bundle:
-    specifier: ^1.4.1
-    version: 1.4.1(postcss@8.4.31)(typescript@5.2.2)
-  encode-fe-lint:
-    specifier: ^1.0.9
-    version: 1.0.9(typescript@5.2.2)
-  husky:
-    specifier: ^6.0.0
-    version: 6.0.0
+importers:
+
+  .:
+    devDependencies:
+      '@swc/core':
+        specifier: ^1.3.96
+        version: 1.3.96
+      '@types/node':
+        specifier: ^20.9.0
+        version: 20.9.0
+      '@types/wechat-miniprogram':
+        specifier: ^3.4.6
+        version: 3.4.6
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+      encode-fe-lint:
+        specifier: ^1.0.9
+        version: 1.0.9(@swc/core@1.3.96)(typescript@5.2.2)
+      husky:
+        specifier: ^6.0.0
+        version: 6.0.0
+
+  packages/browser:
+    dependencies:
+      encode-monitor-core:
+        specifier: workspace:^
+        version: link:../core
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-types:
+        specifier: workspace:^
+        version: link:../types
+      encode-monitor-utils:
+        specifier: workspace:^
+        version: link:../utils
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/core:
+    dependencies:
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-types:
+        specifier: workspace:^
+        version: link:../types
+      encode-monitor-utils:
+        specifier: workspace:^
+        version: link:../utils
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/react:
+    dependencies:
+      encode-monitor-core:
+        specifier: workspace:^
+        version: link:../core
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-types:
+        specifier: workspace:^
+        version: link:../types
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/shared:
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/types:
+    dependencies:
+      encode-monitor-core:
+        specifier: workspace:^
+        version: link:../core
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-utils:
+        specifier: workspace:^
+        version: link:../utils
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/utils:
+    dependencies:
+      encode-monitor-core:
+        specifier: workspace:^
+        version: link:../core
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-types:
+        specifier: workspace:^
+        version: link:../types
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/vue:
+    dependencies:
+      encode-monitor-core:
+        specifier: workspace:^
+        version: link:../core
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-types:
+        specifier: workspace:^
+        version: link:../types
+      encode-monitor-utils:
+        specifier: workspace:^
+        version: link:../utils
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/web:
+    dependencies:
+      encode-monitor-browser:
+        specifier: workspace:^
+        version: link:../browser
+      encode-monitor-react:
+        specifier: workspace:^
+        version: link:../react
+      encode-monitor-vue:
+        specifier: workspace:^
+        version: link:../vue
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/web-performance:
+    dependencies:
+      core-js:
+        specifier: ^3.19.1
+        version: 3.19.1
+      encode-monitor-browser:
+        specifier: workspace:^
+        version: link:../browser
+      encode-monitor-react:
+        specifier: workspace:^
+        version: link:../react
+      encode-monitor-vue:
+        specifier: workspace:^
+        version: link:../vue
+      path-to-regexp:
+        specifier: ^6.2.0
+        version: 6.2.0
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/wx-miniprogram:
+    dependencies:
+      encode-monitor-core:
+        specifier: workspace:^
+        version: link:../core
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-types:
+        specifier: workspace:^
+        version: link:../types
+      encode-monitor-utils:
+        specifier: workspace:^
+        version: link:../utils
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
+
+  packages/wx-miniprogram-performance:
+    dependencies:
+      encode-monitor-shared:
+        specifier: workspace:^
+        version: link:../shared
+      encode-monitor-types:
+        specifier: workspace:^
+        version: link:../types
+      encode-monitor-utils:
+        specifier: workspace:^
+        version: link:../utils
+    devDependencies:
+      encode-bundle:
+        specifier: ^1.4.1
+        version: 1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2)
 
 packages:
 
@@ -324,14 +517,14 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@commitlint/cli@16.3.0:
+  /@commitlint/cli@16.3.0(@swc/core@1.3.96):
     resolution: {integrity: sha512-P+kvONlfsuTMnxSwWE1H+ZcPMY3STFaHb2kAacsqoIkNx66O0T7sTpBxpxkMrFPyhkJiLJnJWMhk4bbvYD3BMA==}
     engines: {node: '>=v12'}
     hasBin: true
     dependencies:
       '@commitlint/format': 16.2.1
       '@commitlint/lint': 16.2.4
-      '@commitlint/load': 16.3.0
+      '@commitlint/load': 16.3.0(@swc/core@1.3.96)
       '@commitlint/read': 16.2.1
       '@commitlint/types': 16.2.1
       lodash: 4.17.21
@@ -390,7 +583,7 @@ packages:
       '@commitlint/types': 16.2.1
     dev: true
 
-  /@commitlint/load@16.3.0:
+  /@commitlint/load@16.3.0(@swc/core@1.3.96):
     resolution: {integrity: sha512-3tykjV/iwbkv2FU9DG+NZ/JqmP0Nm3b7aDwgCNQhhKV5P74JAuByULkafnhn+zsFGypG1qMtI5u+BZoa9APm0A==}
     engines: {node: '>=v12'}
     dependencies:
@@ -401,7 +594,7 @@ packages:
       '@types/node': 20.9.0
       chalk: 4.1.2
       cosmiconfig: 7.1.0
-      cosmiconfig-typescript-loader: 2.0.2(@types/node@20.9.0)(cosmiconfig@7.1.0)(typescript@4.9.5)
+      cosmiconfig-typescript-loader: 2.0.2(@swc/core@1.3.96)(@types/node@20.9.0)(cosmiconfig@7.1.0)(typescript@4.9.5)
       lodash: 4.17.21
       resolve-from: 5.0.0
       typescript: 4.9.5
@@ -820,6 +1013,129 @@ packages:
       fastq: 1.15.0
     dev: true
 
+  /@swc/core-darwin-arm64@1.3.96:
+    resolution: {integrity: sha512-8hzgXYVd85hfPh6mJ9yrG26rhgzCmcLO0h1TIl8U31hwmTbfZLzRitFQ/kqMJNbIBCwmNH1RU2QcJnL3d7f69A==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-darwin-x64@1.3.96:
+    resolution: {integrity: sha512-mFp9GFfuPg+43vlAdQZl0WZpZSE8sEzqL7sr/7Reul5McUHP0BaLsEzwjvD035ESfkY8GBZdLpMinblIbFNljQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-arm-gnueabihf@1.3.96:
+    resolution: {integrity: sha512-8UEKkYJP4c8YzYIY/LlbSo8z5Obj4hqcv/fUTHiEePiGsOddgGf7AWjh56u7IoN/0uEmEro59nc1ChFXqXSGyg==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-arm64-gnu@1.3.96:
+    resolution: {integrity: sha512-c/IiJ0s1y3Ymm2BTpyC/xr6gOvoqAVETrivVXHq68xgNms95luSpbYQ28rqaZC8bQC8M5zdXpSc0T8DJu8RJGw==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-arm64-musl@1.3.96:
+    resolution: {integrity: sha512-i5/UTUwmJLri7zhtF6SAo/4QDQJDH2fhYJaBIUhrICmIkRO/ltURmpejqxsM/ye9Jqv5zG7VszMC0v/GYn/7BQ==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-x64-gnu@1.3.96:
+    resolution: {integrity: sha512-USdaZu8lTIkm4Yf9cogct/j5eqtdZqTgcTib4I+NloUW0E/hySou3eSyp3V2UAA1qyuC72ld1otXuyKBna0YKQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-linux-x64-musl@1.3.96:
+    resolution: {integrity: sha512-QYErutd+G2SNaCinUVobfL7jWWjGTI0QEoQ6hqTp7PxCJS/dmKmj3C5ZkvxRYcq7XcZt7ovrYCTwPTHzt6lZBg==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-win32-arm64-msvc@1.3.96:
+    resolution: {integrity: sha512-hjGvvAduA3Un2cZ9iNP4xvTXOO4jL3G9iakhFsgVhpkU73SGmK7+LN8ZVBEu4oq2SUcHO6caWvnZ881cxGuSpg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-win32-ia32-msvc@1.3.96:
+    resolution: {integrity: sha512-Far2hVFiwr+7VPCM2GxSmbh3ikTpM3pDombE+d69hkedvYHYZxtTF+2LTKl/sXtpbUnsoq7yV/32c9R/xaaWfw==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core-win32-x64-msvc@1.3.96:
+    resolution: {integrity: sha512-4VbSAniIu0ikLf5mBX81FsljnfqjoVGleEkCQv4+zRlyZtO3FHoDPkeLVoy6WRlj7tyrRcfUJ4mDdPkbfTO14g==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@swc/core@1.3.96:
+    resolution: {integrity: sha512-zwE3TLgoZwJfQygdv2SdCK9mRLYluwDOM53I+dT6Z5ZvrgVENmY3txvWDvduzkV+/8IuvrRbVezMpxcojadRdQ==}
+    engines: {node: '>=10'}
+    requiresBuild: true
+    peerDependencies:
+      '@swc/helpers': ^0.5.0
+    peerDependenciesMeta:
+      '@swc/helpers':
+        optional: true
+    dependencies:
+      '@swc/counter': 0.1.2
+      '@swc/types': 0.1.5
+    optionalDependencies:
+      '@swc/core-darwin-arm64': 1.3.96
+      '@swc/core-darwin-x64': 1.3.96
+      '@swc/core-linux-arm-gnueabihf': 1.3.96
+      '@swc/core-linux-arm64-gnu': 1.3.96
+      '@swc/core-linux-arm64-musl': 1.3.96
+      '@swc/core-linux-x64-gnu': 1.3.96
+      '@swc/core-linux-x64-musl': 1.3.96
+      '@swc/core-win32-arm64-msvc': 1.3.96
+      '@swc/core-win32-ia32-msvc': 1.3.96
+      '@swc/core-win32-x64-msvc': 1.3.96
+    dev: true
+
+  /@swc/counter@0.1.2:
+    resolution: {integrity: sha512-9F4ys4C74eSTEUNndnER3VJ15oru2NumfQxS8geE+f3eB5xvfxpWyqE5XlVnxb/R14uoXi6SLbBwwiDSkv+XEw==}
+    dev: true
+
+  /@swc/types@0.1.5:
+    resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
+    dev: true
+
   /@tsconfig/node10@1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
     dev: true
@@ -864,6 +1180,10 @@ packages:
 
   /@types/semver@7.5.5:
     resolution: {integrity: sha512-+d+WYC1BxJ6yVOgUgzK8gWvp5qF8ssV5r4nsDcZWKRWcDQLQ619tvWAxJQYGgBrO1MnLJC7a5GtiYsAoQ47dJg==}
+    dev: true
+
+  /@types/wechat-miniprogram@3.4.6:
+    resolution: {integrity: sha512-j0s4iqLdpZjB7VpaMQECGkEaBm1lYAScqYtoNim9ITP60NiJlTFRgiZilOKgXhuYEVlSCzqRATijCjNPhA0JOg==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.53.0)(typescript@5.2.2):
@@ -1537,7 +1857,13 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
 
-  /cosmiconfig-typescript-loader@2.0.2(@types/node@20.9.0)(cosmiconfig@7.1.0)(typescript@4.9.5):
+  /core-js@3.19.1:
+    resolution: {integrity: sha512-Tnc7E9iKd/b/ff7GFbhwPVzJzPztGrChB8X8GLqoYGdEOG8IpLnK1xPyo3ZoO3HsK6TodJS58VGPOxA+hLHQMg==}
+    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
+    dev: false
+
+  /cosmiconfig-typescript-loader@2.0.2(@swc/core@1.3.96)(@types/node@20.9.0)(cosmiconfig@7.1.0)(typescript@4.9.5):
     resolution: {integrity: sha512-KmE+bMjWMXJbkWCeY4FJX/npHuZPNr9XF9q9CIQ/bpFwi1qHfCmSiKarrCcRa0LO4fWjk93pVoeRtJAkTGcYNw==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -1547,7 +1873,7 @@ packages:
     dependencies:
       '@types/node': 20.9.0
       cosmiconfig: 7.1.0
-      ts-node: 10.9.1(@types/node@20.9.0)(typescript@4.9.5)
+      ts-node: 10.9.1(@swc/core@1.3.96)(@types/node@20.9.0)(typescript@4.9.5)
       typescript: 4.9.5
     transitivePeerDependencies:
       - '@swc/core'
@@ -1741,7 +2067,7 @@ packages:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
     dev: true
 
-  /encode-bundle@1.4.1(postcss@8.4.31)(typescript@5.2.2):
+  /encode-bundle@1.4.1(@swc/core@1.3.96)(postcss@8.4.31)(typescript@5.2.2):
     resolution: {integrity: sha512-aB0o4bXOLwlo+b0odBWUSdvJAh6V5wYCACV9b9TZ1ePgSsnM+hoBMtzRd87K/aMS8g+/aYdifvzYPhAGyBX6QQ==}
     engines: {node: '>=16.14'}
     hasBin: true
@@ -1758,6 +2084,7 @@ packages:
       typescript:
         optional: true
     dependencies:
+      '@swc/core': 1.3.96
       bundle-require: 4.0.2(esbuild@0.18.20)
       cac: 6.7.14
       chokidar: 3.5.3
@@ -1780,7 +2107,7 @@ packages:
       - ts-node
     dev: true
 
-  /encode-fe-lint@1.0.9(typescript@5.2.2):
+  /encode-fe-lint@1.0.9(@swc/core@1.3.96)(typescript@5.2.2):
     resolution: {integrity: sha512-DxgQORvBBcAupZHQz2MrayR2wjXwymh2CdpnHZD/rNdGpUe81XaElLxvOBIKxE6J6mfNxKhIvlcG1vrP+O7PGA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
@@ -1788,7 +2115,7 @@ packages:
       '@babel/core': 7.23.3
       '@babel/eslint-parser': 7.23.3(@babel/core@7.23.3)(eslint@8.53.0)
       '@babel/preset-react': 7.23.3(@babel/core@7.23.3)
-      '@commitlint/cli': 16.3.0
+      '@commitlint/cli': 16.3.0(@swc/core@1.3.96)
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.53.0)(typescript@5.2.2)
       '@typescript-eslint/parser': 5.62.0(eslint@8.53.0)(typescript@5.2.2)
       chalk: 4.1.2
@@ -3809,6 +4136,10 @@ packages:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
     dev: true
 
+  /path-to-regexp@6.2.0:
+    resolution: {integrity: sha512-f66KywYG6+43afgE/8j/GoiNyygk/bnoCbps++3ErRKsIYkGGupyv07R2Ok5m9i67Iqc+T2g1eAUGUPzWhYTyg==}
+    dev: false
+
   /path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
@@ -4597,7 +4928,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.9.0)(typescript@4.9.5):
+  /ts-node@10.9.1(@swc/core@1.3.96)(@types/node@20.9.0)(typescript@4.9.5):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -4612,6 +4943,7 @@ packages:
         optional: true
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
+      '@swc/core': 1.3.96
       '@tsconfig/node10': 1.0.9
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3

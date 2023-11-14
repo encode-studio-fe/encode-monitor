@@ -1,0 +1,24 @@
+{
+  "name": "encode-monitor-shared",
+  "version": "0.0.1",
+  "description": "印客学院--前端稳定性监控 共享参数",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "encode-bundle src/index.ts --format cjs,esm --dts"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "encode",
+    "monitor",
+    "shared"
+  ],
+  "author": "chenghuai",
+  "license": "ISC",
+  "devDependencies": {
+    "encode-bundle": "^1.4.1"
+  }
+}

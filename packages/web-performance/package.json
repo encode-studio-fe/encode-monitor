@@ -1,0 +1,32 @@
+{
+  "name": "encode-monitor-web-performance",
+  "version": "0.0.1",
+  "description": "印客学院--前端稳定性监控 Web 性能监控",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "encode-bundle src/index.ts --format cjs,esm --dts"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "encode",
+    "monitor",
+    "web",
+    "performance"
+  ],
+  "author": "chenghuai",
+  "license": "ISC",
+  "devDependencies": {
+    "encode-bundle": "^1.4.1"
+  },
+  "dependencies": {
+    "encode-monitor-browser": "workspace:^",
+    "encode-monitor-react": "workspace:^",
+    "encode-monitor-vue": "workspace:^",
+    "core-js": "^3.19.1",
+    "path-to-regexp": "^6.2.0"
+  }
+}
