@@ -1,0 +1,33 @@
+{
+  "name": "encode-monitor",
+  "version": "true",
+  "description": "印客学院--前端稳定性监控",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install ",
+    "init": "pnpm install",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
+    "encode-fe-lint-scan": "encode-fe-lint scan",
+    "encode-fe-lint-fix": "encode-fe-lint fix"
+  },
+  "keywords": [
+    "encode",
+    "monitor"
+  ],
+  "author": "chenghuai",
+  "license": "ISC",
+  "devDependencies": {
+    "encode-bundle": "^1.4.1",
+    "encode-fe-lint": "^1.0.9",
+    "husky": "^6.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "encode-fe-lint commit-msg-scan"
+    }
+  }
+}
