@@ -1,6 +1,6 @@
 {
   "name": "encode-monitor-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "印客学院--前端稳定性监控 核心功能",
   "main": "dist/index.global.js",
   "module": "dist/index.mjs",
