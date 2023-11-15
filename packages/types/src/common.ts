@@ -10,7 +10,7 @@ export interface ResourceErrorTarget {
   localName?: string;
 }
 
-export interface MITOHttp {
+export interface MonitorHttp {
   type: HttpTypes;
   traceId?: string;
   method?: string;
@@ -27,9 +27,9 @@ export interface MITOHttp {
   errMsg?: string;
 }
 
-export interface MITOXMLHttpRequest extends XMLHttpRequest {
+export interface MonitorXMLHttpRequest extends XMLHttpRequest {
   [key: string]: any;
-  mito_xhr?: MITOHttp;
+  monitor_xhr?: MonitorHttp;
 }
 
 export interface ErrorStack {

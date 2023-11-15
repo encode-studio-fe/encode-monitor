@@ -4,8 +4,8 @@ import { Logger } from './logger';
 import { variableTypeDetection } from './is';
 import { DeviceInfo } from 'encode-monitor-types';
 
-// MITO的全局变量
-export interface MitoSupport {
+// Monitor的全局变量
+export interface MonitorSupport {
   logger: Logger;
   breadcrumb: Breadcrumb;
   transportData: TransportData;
@@ -16,9 +16,9 @@ export interface MitoSupport {
   track?: any;
 }
 
-interface MITOGlobal {
+interface MonitorGlobal {
   console?: Console;
-  __MITO__?: MitoSupport;
+  __Monitor__?: MonitorSupport;
 }
 
 export const isNodeEnv = variableTypeDetection.isProcess(
@@ -38,13 +38,13 @@ export const isBrowserEnv = variableTypeDetection.isWindow(
  * ../returns Global scope object
  */
 export function getGlobal<T>() {
-  if (isBrowserEnv) return window as unknown as MITOGlobal & T;
-  if (isWxMiniEnv) return wx as unknown as MITOGlobal & T;
-  if (isNodeEnv) return process as unknown as MITOGlobal & T;
+  if (isBrowserEnv) return window as unknown as MonitorGlobal & T;
+  if (isWxMiniEnv) return wx as unknown as MonitorGlobal & T;
+  if (isNodeEnv) return process as unknown as MonitorGlobal & T;
 }
 
 const _global = getGlobal<Window>();
-const _support = getGlobalMitoSupport();
+const _support = getGlobalMonitorSupport();
 
 export { _global, _support };
 
@@ -60,13 +60,13 @@ export function getFlag(replaceType: EventTypes | WxEvents): boolean {
 }
 
 /**
- * 获取全部变量__MITO__的引用地址
+ * 获取全部变量__Monitor__的引用地址
  *
- * ../returns global variable of MITO
+ * ../returns global variable of Monitor
  */
-export function getGlobalMitoSupport(): MitoSupport {
-  _global.__MITO__ = _global.__MITO__ || ({} as MitoSupport);
-  return _global.__MITO__;
+export function getGlobalMonitorSupport(): MonitorSupport {
+  _global.__Monitor__ = _global.__Monitor__ || ({} as MonitorSupport);
+  return _global.__Monitor__;
 }
 
 export function supportsHistory(): boolean {

@@ -26,7 +26,7 @@ import {
   getCurrentRoute,
 } from 'encode-monitor-utils';
 import { HandleWxAppEvents, HandleWxPageEvents } from './handleWxEvents';
-import { MITOHttp, EMethods } from 'encode-monitor-types';
+import { MonitorHttp, EMethods } from 'encode-monitor-types';
 import { getNavigateBackTargetUrl } from './utils';
 import { EListenerTypes } from './constant';
 import { MiniRoute } from './types';
@@ -205,7 +205,7 @@ function replaceAction(
     | WechatMiniprogram.Component.MethodOption,
 ) {
   function gestureTrigger(e) {
-    e.mitoWorked = true; // 给事件对象增加特殊的标记，避免被无限透传
+    e.monitorWorked = true; // 给事件对象增加特殊的标记，避免被无限透传
     triggerHandlers(EventTypes.DOM, e);
   }
   const throttleGesturetrigger = throttle(gestureTrigger, sdkOptions.throttleDelayTime);
@@ -222,7 +222,7 @@ function replaceAction(
         function (originMethod: (args: any) => void) {
           return function (...args: any): void {
             const e = args[0];
-            if (e && e.type && e.currentTarget && !e.mitoWorked) {
+            if (e && e.type && e.currentTarget && !e.monitorWorked) {
               if (listenerTypes.indexOf(e.type) > -1) {
                 throttleGesturetrigger(e);
               }
@@ -302,7 +302,7 @@ export function replaceNetwork() {
             name: (options as WechatMiniprogram.UploadFileOption).name,
           };
         }
-        const data: MITOHttp = {
+        const data: MonitorHttp = {
           type: HttpTypes.XHR,
           method,
           url,

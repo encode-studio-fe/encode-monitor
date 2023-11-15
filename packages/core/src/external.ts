@@ -36,7 +36,7 @@ export function log({
     type,
     level,
     message: unknownToString(message),
-    name: 'MITO.log',
+    name: 'Monitor.log',
     customTag: unknownToString(tag),
     time: getTimestamp(),
     url: isWxMiniEnv ? getCurrentRoute() : getLocationHref(),

@@ -5,7 +5,7 @@ import { handleVueError } from './helper';
 
 const hasConsole = typeof console !== 'undefined';
 
-const MitoVue = {
+const MonitorVue = {
   install(Vue: VueInstance): void {
     if (getFlag(EventTypes.VUE) || !Vue || !Vue.config) return;
     setFlag(EventTypes.VUE, true);
@@ -22,4 +22,4 @@ const MitoVue = {
   },
 };
 
-export { MitoVue };
+export { MonitorVue };

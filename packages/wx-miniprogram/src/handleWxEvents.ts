@@ -6,7 +6,7 @@ import {
   transportData,
   options as sdkOptions,
 } from 'encode-monitor-core';
-import { ReportDataType, Replace, MITOHttp } from 'encode-monitor-types';
+import { ReportDataType, Replace, MonitorHttp } from 'encode-monitor-types';
 import {
   extractErrorStack,
   getCurrentRoute,
@@ -242,7 +242,7 @@ const HandleWxConsoleEvents = {
 };
 
 const HandleNetworkEvents = {
-  handleRequest(data: MITOHttp): void {
+  handleRequest(data: MonitorHttp): void {
     const result = httpTransform(data);
     result.url = getCurrentRoute();
     if (data.status === undefined) {

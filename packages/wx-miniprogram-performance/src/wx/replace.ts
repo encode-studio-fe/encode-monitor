@@ -81,9 +81,9 @@ function replaceAction(
         function (originMethod: (args: any) => void) {
           return function (...args: any[]): void {
             const event = args.find((arg) => arg && arg.type && arg.currentTarget);
-            if (event && !event.mitoWorked && ListenerTypes.indexOf(event.type) > -1) {
+            if (event && !event.monitorWorked && ListenerTypes.indexOf(event.type) > -1) {
               store.emit(WxListenerTypes[event.type] as WxPerformanceItemType, event);
-              event.mitoWorked = true;
+              event.monitorWorked = true;
             }
             return originMethod.apply(this, args);
           };

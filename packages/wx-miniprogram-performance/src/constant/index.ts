@@ -6,7 +6,7 @@ export enum EListenerTypes {
 }
 
 export const STORAGE_KEY = {
-  deviceId: 'mito--uuid',
+  deviceId: 'monitor--uuid',
 };
 
 export enum WxPerformanceDataType {

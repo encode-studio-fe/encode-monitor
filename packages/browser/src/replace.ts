@@ -17,7 +17,7 @@ import {
   ReplaceHandler,
   subscribeEvent,
 } from 'encode-monitor-core';
-import { EMethods, MITOHttp, MITOXMLHttpRequest } from 'encode-monitor-types';
+import { EMethods, MonitorHttp, MonitorXMLHttpRequest } from 'encode-monitor-types';
 import { voidFun, EventTypes, HttpTypes, HttpCodes } from 'encode-monitor-shared';
 
 function isFilterHttpUrl(url: string) {
@@ -66,8 +66,8 @@ function xhrReplace(): void {
   }
   const originalXhrProto = XMLHttpRequest.prototype;
   replaceOld(originalXhrProto, 'open', (originalOpen: voidFun): voidFun => {
-    return function (this: MITOXMLHttpRequest, ...args: any[]): void {
-      this.mito_xhr = {
+    return function (this: MonitorXMLHttpRequest, ...args: any[]): void {
+      this.monitor_xhr = {
         method: variableTypeDetection.isString(args[0]) ? args[0].toUpperCase() : args[0],
         url: args[1],
         sTime: getTimestamp(),
@@ -77,44 +77,44 @@ function xhrReplace(): void {
       //   console.log('超时', this)
       // }
       // this.timeout = 10000
-      // on(this, EventTypes.ERROR, function (this: MITOXMLHttpRequest) {
-      //   if (this.mito_xhr.isSdkUrl) return
-      //   this.mito_xhr.isError = true
+      // on(this, EventTypes.ERROR, function (this: MonitorXMLHttpRequest) {
+      //   if (this.monitor_xhr.isSdkUrl) return
+      //   this.monitor_xhr.isError = true
       //   const eTime = getTimestamp()
-      //   this.mito_xhr.time = eTime
-      //   this.mito_xhr.status = this.status
-      //   this.mito_xhr.elapsedTime = eTime - this.mito_xhr.sTime
-      //   triggerHandlers(EventTypes.XHR, this.mito_xhr)
-      //   logger.error(`接口错误,接口信息:${JSON.stringify(this.mito_xhr)}`)
+      //   this.monitor_xhr.time = eTime
+      //   this.monitor_xhr.status = this.status
+      //   this.monitor_xhr.elapsedTime = eTime - this.monitor_xhr.sTime
+      //   triggerHandlers(EventTypes.XHR, this.monitor_xhr)
+      //   logger.error(`接口错误,接口信息:${JSON.stringify(this.monitor_xhr)}`)
       // })
       originalOpen.apply(this, args);
     };
   });
   replaceOld(originalXhrProto, 'send', (originalSend: voidFun): voidFun => {
-    return function (this: MITOXMLHttpRequest, ...args: any[]): void {
-      const { method, url } = this.mito_xhr;
+    return function (this: MonitorXMLHttpRequest, ...args: any[]): void {
+      const { method, url } = this.monitor_xhr;
       setTraceId(url, (headerFieldName: string, traceId: string) => {
-        this.mito_xhr.traceId = traceId;
+        this.monitor_xhr.traceId = traceId;
         this.setRequestHeader(headerFieldName, traceId);
       });
       options.beforeAppAjaxSend && options.beforeAppAjaxSend({ method, url }, this);
-      on(this, 'loadend', function (this: MITOXMLHttpRequest) {
+      on(this, 'loadend', function (this: MonitorXMLHttpRequest) {
         if (
           (method === EMethods.Post && transportData.isSdkTransportUrl(url)) ||
           isFilterHttpUrl(url)
         )
           return;
         const { responseType, response, status } = this;
-        this.mito_xhr.reqData = args[0];
+        this.monitor_xhr.reqData = args[0];
         const eTime = getTimestamp();
-        this.mito_xhr.time = this.mito_xhr.sTime;
-        this.mito_xhr.status = status;
+        this.monitor_xhr.time = this.monitor_xhr.sTime;
+        this.monitor_xhr.status = status;
         if (['', 'json', 'text'].indexOf(responseType) !== -1) {
-          this.mito_xhr.responseText =
+          this.monitor_xhr.responseText =
             typeof response === 'object' ? JSON.stringify(response) : response;
         }
-        this.mito_xhr.elapsedTime = eTime - this.mito_xhr.sTime;
-        triggerHandlers(EventTypes.XHR, this.mito_xhr);
+        this.monitor_xhr.elapsedTime = eTime - this.monitor_xhr.sTime;
+        triggerHandlers(EventTypes.XHR, this.monitor_xhr);
       });
       originalSend.apply(this, args);
     };
@@ -129,7 +129,7 @@ function fetchReplace(): void {
     return function (url: string, config: Partial<Request> = {}): void {
       const sTime = getTimestamp();
       const method = (config && config.method) || 'GET';
-      let handlerData: MITOHttp = {
+      let handlerData: MonitorHttp = {
         type: HttpTypes.FETCH,
         method,
         reqData: config && config.body,
@@ -283,7 +283,7 @@ function domReplace(): void {
   // on(
   //   _global.document,
   //   'keypress',
-  //   function (e: MITOElement) {
+  //   function (e: MonitorElement) {
   //     keypressThrottle('dom', {
   //       category: 'keypress',
   //       data: this

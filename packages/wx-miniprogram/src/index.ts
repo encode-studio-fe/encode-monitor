@@ -4,13 +4,13 @@ import { setupReplace } from './load';
 import { initOptions, log } from 'encode-monitor-core';
 import { sendTrackData, track } from './initiative';
 import { SDK_NAME, SDK_VERSION } from 'encode-monitor-shared';
-import { MitoVue } from 'encode-monitor-vue';
+import { MonitorVue } from 'encode-monitor-vue';
 import { errorBoundaryReport } from 'encode-monitor-react';
 
 export function init(options: InitOptions = {}) {
   if (!isWxMiniEnv) return;
   initOptions(options);
   setupReplace();
-  Object.assign(wx, { mitoLog: log, SDK_NAME, SDK_VERSION });
+  Object.assign(wx, { monitorLog: log, SDK_NAME, SDK_VERSION });
 }
-export { log, sendTrackData, track, MitoVue, errorBoundaryReport };
+export { log, sendTrackData, track, MonitorVue, errorBoundaryReport };

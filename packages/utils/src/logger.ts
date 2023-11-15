@@ -1,5 +1,5 @@
 import { _global, _support } from './global'
-const PREFIX = 'MITO Logger'
+const PREFIX = 'Monitor Logger'
 
 export class Logger {
   private enabled = false

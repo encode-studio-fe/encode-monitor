@@ -2,15 +2,17 @@
   "name": "encode-monitor-browser",
   "version": "0.0.2",
   "description": "印客学院--前端稳定性监控 页面监控",
-  "main": "dist/index.js",
+  "main": "dist/index.global.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "unpkg": "dist/index.global.js",
   "scripts": {
-    "build": "encode-bundle src/index.ts --format iife,cjs,esm --dts --global-name encode_monitor",
+    "build": "encode-bundle src/index.ts --format iife,cjs,esm --dts --minify --global-name encodeMonitor",
     "clean": "rimraf dist node_modules"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "keywords": [
     "encode",

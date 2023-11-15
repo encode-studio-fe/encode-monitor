@@ -118,7 +118,7 @@ export enum EventTypes {
   ERROR = 'error',
   HASHCHANGE = 'hashchange',
   UNHANDLEDREJECTION = 'unhandledrejection',
-  MITO = 'mito',
+  MONITOR = 'monitor',
   VUE = 'Vue',
   MINI_ROUTE = 'miniRoute',
   MINI_PERFORMANCE = 'miniPerformance',

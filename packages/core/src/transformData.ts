@@ -7,11 +7,11 @@ import {
   SpanStatus,
   interceptStr,
 } from 'encode-monitor-utils';
-import { ReportDataType, MITOHttp, Replace, ResourceErrorTarget } from 'encode-monitor-types';
+import { ReportDataType, MonitorHttp, Replace, ResourceErrorTarget } from 'encode-monitor-types';
 import { getRealPath } from './errorId';
 import { breadcrumb } from './breadcrumb';
 
-export function httpTransform(data: MITOHttp): ReportDataType {
+export function httpTransform(data: MonitorHttp): ReportDataType {
   let message = '';
   const { elapsedTime, time, method, traceId, type, status } = data;
   const name = `${type}--${method}`;

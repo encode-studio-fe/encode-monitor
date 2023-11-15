@@ -15,13 +15,13 @@ import {
   unknownToString,
   Severity,
 } from 'encode-monitor-utils';
-import { ReportDataType, Replace, MITOHttp, ResourceErrorTarget } from 'encode-monitor-types';
+import { ReportDataType, Replace, MonitorHttp, ResourceErrorTarget } from 'encode-monitor-types';
 
 const HandleEvents = {
   /**
    * 处理xhr、fetch回调
    */
-  handleHttp(data: MITOHttp, type: BreadCrumbTypes): void {
+  handleHttp(data: MonitorHttp, type: BreadCrumbTypes): void {
     const isError =
       data.status === 0 ||
       data.status === HttpCodes.BAD_REQUEST ||
@@ -46,7 +46,7 @@ const HandleEvents = {
     }
   },
   /**
-   * 处理window的error的监听回到
+   * 处理window的error的监听回调
    */
   handleError(errorEvent: ErrorEvent) {
     const target = errorEvent.target as ResourceErrorTarget;
@@ -78,6 +78,7 @@ const HandleEvents = {
     });
     transportData.send(result);
   },
+  
   handleNotErrorInstance(message: string, filename: string, lineno: number, colno: number) {
     let name: string | ErrorTypes = ErrorTypes.UNKNOWN;
     const url = filename || getLocationHref();
