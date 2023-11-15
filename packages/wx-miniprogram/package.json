@@ -1,6 +1,6 @@
 {
   "name": "encode-monitor-wx-mini-program",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "印客学院--前端稳定性监控 小程序监控",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
