@@ -6,6 +6,7 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install ",
     "init": "pnpm install",
+    "demo": "cross-env NODE_ENV=demo ts-node ./examples/server/index.ts",
     "clean": "pnpm -r --filter=./packages/* run clean",
     "build": "pnpm run init && pnpm -r --filter=./packages/* run build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
