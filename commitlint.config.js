@@ -1,3 +1,1 @@
-module.exports = {
-  extends: ['encode'],
-};
+module.exports = { extends: ['encode'] };
