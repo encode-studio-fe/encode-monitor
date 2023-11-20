@@ -1,0 +1,32 @@
+{
+  "name": "encode-monitor-wx-mini-program",
+  "version": "0.0.2",
+  "description": "印客学院--前端稳定性监控 小程序监控",
+  "main": "dist/index.global.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.global.js",
+  "scripts": {
+    "build": "encode-bundle src/index.ts --format iife,cjs,esm --dts --minify --global-name encodeMonitor",
+    "clean": "rimraf dist node_modules"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "encode",
+    "monitor",
+    "mini"
+  ],
+  "author": "chenghuai",
+  "license": "ISC",
+  "devDependencies": {
+    "encode-bundle": "^1.4.1"
+  },
+  "dependencies": {
+    "encode-monitor-core": "workspace:^",
+    "encode-monitor-utils": "workspace:^",
+    "encode-monitor-shared": "workspace:^",
+    "encode-monitor-types": "workspace:^"
+  }
+}
